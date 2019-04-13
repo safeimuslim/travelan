@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "travelan",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Travelan reposiory",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Safei Muslim <safeydev@gmail.com>",
   "dependencies": {
     "fullcalendar-reactwrapper": "^1.0.7",
     "gatsby": "^2.2.3",
