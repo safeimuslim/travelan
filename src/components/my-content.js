@@ -4,22 +4,9 @@ import travelan2Src from '../images/travelan-2.jpeg';
 import travelan3Src from '../images/travelan-3.jpeg';
 import travelan4Src from '../images/travelan-4.jpg';
 import mapSrc from '../images/map.jpg'
-// import FullCalendar from 'fullcalendar-reactwrapper';
-// import events from '../utils/events';
+import Order from './order'
 
-// import FullCalendar from '@fullcalendar/react'
-// import dayGridPlugin from '@fullcalendar/daygrid'
-
-// import '../styles/scss/main.scss' // webpack must be configured to do this
-
-let FullCalendar, dayGridPlugin
 class MyContent extends Component { 
-  constructor(props) {
-    super(props)
-    this.state = {
-      showCalendar: false
-    }
-  }
   toggleGrid() { 
     var x = document.getElementById("myGrid");
     if (x.className === "w3-row") {
@@ -29,24 +16,16 @@ class MyContent extends Component {
     }
   }
 
-  componentDidMount() { 
-    if (typeof window !== "undefined") {
-      FullCalendar = require('@fullcalendar/react').default;
-      dayGridPlugin = require('@fullcalendar/daygrid').default;
-      this.setState({ showCalendar: true })
-    }
-  }
-
   render() {
-    const { showCalendar } = this.state
     return (
       <div className="w3-content" style={{ maxWidth: '1100px' }}>
+        <Order />
         <div className="w3-container w3-content w3-center w3-padding-32" style={{ maxWidth:'800px' }} id="band">
-          <h1 className="w3-xxxlarge">TRAVELAN</h1>
+          <h1 className="w3-xxxlarge w3-text-deep-orange w3-hover-text-orange">TRAVELAN</h1>
           <p>Kami adalah Biro Perjalanan dan wisata, Agen Resmi Tiket Pesawat Domestik/Internasional, Kerata Api dan Kapal Laut serta Agen Travel</p>
 
           <p className="">
-            <button className="w3-button w3-black" onClick={() => this.toggleGrid()}>
+            <button className="w3-button w3-grey w3-round-small" onClick={() => this.toggleGrid()}>
               Toggle Grid Padding
             </button>
           </p>
@@ -70,7 +49,7 @@ class MyContent extends Component {
 
         <div className="w3-row-padding" id="layanan-24-jam" style={{ margin: 20 }}>
           <div className="w3-col l12 12">
-            <h3>TIKET MURAH</h3>
+            <h1 className="w3-text-deep-orange">TIKET MURAH</h1>
             <h6>
               Kenapa murah? Pada prinsipnya harga tiket pesawat ditentukan oleh dua kondisi musim peek sesion dan low sesion. Harga tiket pesawat murah juga bisa dibilang relatif pada masa kedua musim tersebut. Misalnya:
               <br />
@@ -84,70 +63,13 @@ class MyContent extends Component {
                 <li>Apabila dalam masa Pemesanan masih dalam Limit Booking dan harga pemesanan turun dari harga awal maka harga mengikuti harga yang termurah.</li>
               </ol>  
             </h6>
+            <div className="w3-panel w3-red w3-padding-32">
+              <h6><i className="fa fa-info w3-deep-orange w3-padding w3-margin-right"></i>Layanan Online 24 Jam | Tiket Pesawat Domestik & Internasional, Kereta Api & Kapal Laut | Paket Tour | Travel Antar Kota | Antar Jemput Bandara dan Stasiun'</h6>
+            </div>
           {/* <p>We accept: <i class="fa fa-credit-card w3-large"></i> <i class="fa fa-cc-mastercard w3-large"></i> <i class="fa fa-cc-amex w3-large"></i> <i class="fa fa-cc-cc-visa w3-large"></i><i class="fa fa-cc-paypal w3-large"></i></p> */}
           </div>
           <div className="w3-col l12 12">
             <img src={mapSrc} alt="mapSrc" className="w3-image w3-greyscale" style={{ width:'100%' }} />
-          </div>
-        </div>
-
-
-        <div className="w3-row-padding" id="kalender-libur" style={{ margin: 20 }}>
-          <h4>KALENDER LIBUR</h4>
-          <div ref={this.confettiCanvas} />
-          {showCalendar && 
-          <FullCalendar defaultView="dayGridMonth" plugins={[ dayGridPlugin ]} /> }
-          {/* <FullCalendar
-            id = "your-custom-ID"
-            header = {{
-                left: 'prev,next today myCustomButton',
-                center: 'title',
-                right: 'month,basicWeek,basicDay'
-            }}
-            defaultDate={new Date()}
-            navLinks= {true} // can click day/week names to navigate views
-            editable= {true}
-            eventLimit= {true} // allow "more" link when too many events
-            events = {events} /> */}
-        </div>
-        {/* <div className="w3-container">
-          <h3>Biro Perjalanan Dan Wisata </h3>
-          <p>Melayani:
-            <ol>
-              <li>Tiket pesawat domestik dan international</li>
-              <li>Tiket kereta api dan kapal laut</li>
-              <li>Paket wisata</li>
-              <li>Travel antar kota pulau jawa</li>
-            </ol>
-          </p>
-        </div> */}
-        <div className="w3-container" id="kontak">
-          <div className="w3-panel w3-center w3-padding-16">
-            {/* <h3>HUBUNGI KAMI </h3> */}
-            <div className="w3-row-padding">
-              <div className="w3-third">
-                <div className="">
-                  <h5>KONTAK</h5>
-                  <p className="w3-opacity">0878-6909-2223 <br /> 0813-9362-8933</p>
-                  <a href="tel:+62-878-6909-2223" target="_blank" rel="noopener noreferrer" className="w3-button w3-red w3-margin-top w3-round-xxlarge">Telepon</a>
-                </div>
-              </div>
-              <div className="w3-third">
-                <div className="">
-                  <h5>ALAMAT</h5>
-                  <p className="w3-opacity">Jl. Matesih-Jatiyoso, Talesan, Matesih, Kabupaten Karanganyar, Jawa Tengah 57781</p>
-                  <a target="_blank" href="https://www.google.com/maps/dir//Tatik+Tour+%26+Travel/data=!4m8!4m7!1m0!1m5!1m1!1s0x2e7a211d8c30285b:0x374753471bdd2a33!2m2!1d111.04549899999999!2d-7.652533" rel="noopener noreferrer" className="w3-button w3-red w3-margin-top w3-round-xxlarge">Dapatkan petunjuk arah</a>
-                </div>
-              </div>
-              <div className="w3-third">
-              <div className="">
-                <h5>JAM OPERASIONAL</h5>
-                <p className="w3-opacity">
-                  Setiap hari buka jam 08.00–17.00
-                </p>
-              </div>
-            </div>
-            </div>
           </div>
         </div>
 {/* 
