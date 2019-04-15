@@ -93,7 +93,7 @@ class Order extends Component {
     if (departureSelected && destinationSelected) {
       const message = `Hallo travelan! Saya mau pesan travel dari ${departureSelected} ke ${destinationSelected}.`
       this.setState({ warning: '' }, () => {
-        window.open(`https://api.whatsapp.com/send?phone=6282329230000&text=${message}`, '_blank');
+        window.open(`https://api.whatsapp.com/send?phone=6287869092223&text=${message}`, '_blank');
       })
     } else { 
       this.setState({ warning: 'Pilih lokasi keberangkatan dan tujuan dengan benar.' })
