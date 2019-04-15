@@ -4,7 +4,7 @@ import React from "react"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 // import FullCalendar from 'fullcalendar-reactwrapper';
-import events from '../utils/events';
+// import events from '../utils/events';
 
 const IndexPage = () => (
   <Layout>

@@ -7,12 +7,19 @@ import mapSrc from '../images/map.jpg'
 // import FullCalendar from 'fullcalendar-reactwrapper';
 // import events from '../utils/events';
 
-import FullCalendar from '@fullcalendar/react'
-import dayGridPlugin from '@fullcalendar/daygrid'
+// import FullCalendar from '@fullcalendar/react'
+// import dayGridPlugin from '@fullcalendar/daygrid'
 
 // import '../styles/scss/main.scss' // webpack must be configured to do this
 
+let FullCalendar, dayGridPlugin
 class MyContent extends Component { 
+  constructor(props) {
+    super(props)
+    this.state = {
+      showCalendar: false
+    }
+  }
   toggleGrid() { 
     var x = document.getElementById("myGrid");
     if (x.className === "w3-row") {
@@ -22,7 +29,16 @@ class MyContent extends Component {
     }
   }
 
+  componentDidMount() { 
+    if (typeof window !== "undefined") {
+      FullCalendar = require('@fullcalendar/react').default;
+      dayGridPlugin = require('@fullcalendar/daygrid').default;
+      this.setState({ showCalendar: true })
+    }
+  }
+
   render() {
+    const { showCalendar } = this.state
     return (
       <div className="w3-content" style={{ maxWidth: '1100px' }}>
         <div className="w3-container w3-content w3-center w3-padding-32" style={{ maxWidth:'800px' }} id="band">
@@ -52,8 +68,8 @@ class MyContent extends Component {
             </div>
         </div>
 
-        <div class="w3-row-padding" id="layanan-24-jam" style={{ margin: 20 }}>
-          <div class="w3-col l12 12">
+        <div className="w3-row-padding" id="layanan-24-jam" style={{ margin: 20 }}>
+          <div className="w3-col l12 12">
             <h3>TIKET MURAH</h3>
             <h6>
               Kenapa murah? Pada prinsipnya harga tiket pesawat ditentukan oleh dua kondisi musim peek sesion dan low sesion. Harga tiket pesawat murah juga bisa dibilang relatif pada masa kedua musim tersebut. Misalnya:
@@ -70,15 +86,17 @@ class MyContent extends Component {
             </h6>
           {/* <p>We accept: <i class="fa fa-credit-card w3-large"></i> <i class="fa fa-cc-mastercard w3-large"></i> <i class="fa fa-cc-amex w3-large"></i> <i class="fa fa-cc-cc-visa w3-large"></i><i class="fa fa-cc-paypal w3-large"></i></p> */}
           </div>
-          <div class="w3-col l12 12">
-            <img src={mapSrc} alt="mapSrc" class="w3-image w3-greyscale" style={{ width:'100%;' }} />
+          <div className="w3-col l12 12">
+            <img src={mapSrc} alt="mapSrc" className="w3-image w3-greyscale" style={{ width:'100%' }} />
           </div>
         </div>
 
 
-        <div class="w3-row-padding" id="kalender-libur" style={{ margin: 20 }}>
+        <div className="w3-row-padding" id="kalender-libur" style={{ margin: 20 }}>
           <h4>KALENDER LIBUR</h4>
-          <FullCalendar defaultView="dayGridMonth" plugins={[ dayGridPlugin ]} />
+          <div ref={this.confettiCanvas} />
+          {showCalendar && 
+          <FullCalendar defaultView="dayGridMonth" plugins={[ dayGridPlugin ]} /> }
           {/* <FullCalendar
             id = "your-custom-ID"
             header = {{
