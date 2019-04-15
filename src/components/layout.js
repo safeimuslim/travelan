@@ -14,7 +14,11 @@ import Footer from "./my-footer"
 import "../styles/css/w3.css"
 import "../styles/css/font-awesome.min.css"
 import "../styles/css/my.css"
-import 'fullcalendar-reactwrapper/dist/css/fullcalendar.min.css'
+// import 'fullcalendar-reactwrapper/dist/css/fullcalend@import '~@fullcalendar/core/main.css';
+// import '@fullcalendar/daygrid/main.css';
+// import '@fullcalendar/timegrid/main.css';
+import '@fullcalendar/core/main.css';
+import '@fullcalendar/daygrid/main.css';
 
 const Layout = ({ children }) => (
   <StaticQuery

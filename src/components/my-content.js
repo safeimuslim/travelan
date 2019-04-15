@@ -4,8 +4,13 @@ import travelan2Src from '../images/travelan-2.jpeg';
 import travelan3Src from '../images/travelan-3.jpeg';
 import travelan4Src from '../images/travelan-4.jpg';
 import mapSrc from '../images/map.jpg'
-import FullCalendar from 'fullcalendar-reactwrapper';
-import events from '../utils/events';
+// import FullCalendar from 'fullcalendar-reactwrapper';
+// import events from '../utils/events';
+
+import FullCalendar from '@fullcalendar/react'
+import dayGridPlugin from '@fullcalendar/daygrid'
+
+// import '../styles/scss/main.scss' // webpack must be configured to do this
 
 class MyContent extends Component { 
   toggleGrid() { 
@@ -73,7 +78,8 @@ class MyContent extends Component {
 
         <div class="w3-row-padding" id="kalender-libur" style={{ margin: 20 }}>
           <h4>KALENDER LIBUR</h4>
-          <FullCalendar
+          <FullCalendar defaultView="dayGridMonth" plugins={[ dayGridPlugin ]} />
+          {/* <FullCalendar
             id = "your-custom-ID"
             header = {{
                 left: 'prev,next today myCustomButton',
@@ -84,7 +90,7 @@ class MyContent extends Component {
             navLinks= {true} // can click day/week names to navigate views
             editable= {true}
             eventLimit= {true} // allow "more" link when too many events
-            events = {events} />
+            events = {events} /> */}
         </div>
         {/* <div className="w3-container">
           <h3>Biro Perjalanan Dan Wisata </h3>
